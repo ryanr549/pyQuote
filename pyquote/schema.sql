@@ -4,7 +4,6 @@ DROP TABLE IF EXISTS quote;
 CREATE TABLE subjects (
     id INTEGER PRIMARY KEY,
     subject TEXT UNIQUE NOT NULL,
-    collector TEXT NOT NULL DEFAULT anonymous,
     collected TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
