@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}Search{% endblock %}</h1>
+{% endblock %}
+{% block content %}
+<form name="form1" method="post">
+    subject=<input type="text" placeholder="subject" value="{{ var1 }}"
+                                                     name="subject">
+    <input type="submit" value="SUBMIT" onclick="">
+</form>
+{% if message %}
+    <p style="color:red">{{ message }}</p>
+{% endif %}
+{% endblock %}
+

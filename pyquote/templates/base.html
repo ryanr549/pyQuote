@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<title>{% block title %}{% endblock %} - pyquote</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='search.css') }}">
+<nav>
+    <h1>pyquote</h1>
+    <ul>
+        <li><a href="/">home</a></li>
+    </ul>
+</nav>
+<section class="content">
+    <header>
+        {% block header %}{% endblock %}
+    </header>
+    {% for message in get_flashed_messages() %}
+        <div class="flash">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% block content %}{% endblock %}
+</section>
+
