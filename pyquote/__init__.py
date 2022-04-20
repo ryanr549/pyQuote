@@ -32,7 +32,13 @@ def create_app(test_config=None):
 
     from . import search
 <<<<<<< HEAD
+<<<<<<< HEAD
     app.register_blueprint(search.bp)
+=======
+    from . import show
+    app.register_blueprint(search.bp)
+    app.register_blueprint(show.bp)
+>>>>>>> feature-search
 =======
     from . import show
     app.register_blueprint(search.bp)
