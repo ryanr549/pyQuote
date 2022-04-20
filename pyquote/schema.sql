@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS subjects;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 DROP TABLE IF EXISTS quote;
 
 CREATE TABLE subjects (
@@ -9,12 +10,17 @@ CREATE TABLE subjects (
 =======
 =======
 >>>>>>> feature-search
+=======
+>>>>>>> feature-search
 DROP TABLE IF EXISTS quotes;
 
 CREATE TABLE subjects (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     subject TEXT NOT NULL,
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> feature-search
+=======
 >>>>>>> feature-search
 =======
 >>>>>>> feature-search
@@ -22,6 +28,7 @@ CREATE TABLE subjects (
 );
 
 CREATE TABLE quotes (
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     id INTEGER PRIMARY KEY,
@@ -34,6 +41,8 @@ CREATE TABLE quotes (
 =======
 =======
 >>>>>>> feature-search
+=======
+>>>>>>> feature-search
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     subject_id INTEGER NOT NULL,
     quote TEXT NOT NULL,
@@ -42,6 +51,9 @@ CREATE TABLE quotes (
     collected TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (subject_id) REFERENCES subjects (id)
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> feature-search
+=======
 >>>>>>> feature-search
 =======
 >>>>>>> feature-search

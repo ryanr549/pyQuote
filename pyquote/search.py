@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 from flask import Blueprint, g, redirect, render_template, request, session, url_for
 from . import db
 bp = Blueprint('search', __name__, url_prefix='/search')
@@ -15,6 +16,8 @@ def add():
         db =
     return render_template('search/search.html')
 =======
+=======
+>>>>>>> feature-search
 =======
 >>>>>>> feature-search
 """blueprint for input and submit subjects"""
@@ -71,6 +74,9 @@ def add():
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> feature-search
+=======
 >>>>>>> feature-search
 =======
 >>>>>>> feature-search
