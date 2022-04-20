@@ -4,18 +4,11 @@
 <h1>{% block title %}Search{% endblock %}</h1>
 {% endblock %}
 {% block content %}
-<<<<<<< HEAD
-<form name="form1" method="post">
-    subject=<input type="text" placeholder="subject" value="{{ var1 }}"
-                                                     name="subject">
-    <input type="submit" value="SUBMIT" onclick="">
-=======
 <form method="post">
     <label for="subject">Subject</label>
     <input name="subject" id="body" type="text" value="{{ request.form['subject'] }}"
                                     required>
     <input type="submit" value="Save">
->>>>>>> feature-search
 </form>
 {% endblock %}
 
