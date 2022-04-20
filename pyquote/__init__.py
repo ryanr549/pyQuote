@@ -31,6 +31,8 @@ def create_app(test_config=None):
     db.init_app(app)
 
     from . import search
+    from . import show
     app.register_blueprint(search.bp)
+    app.register_blueprint(show.bp)
 
     return app

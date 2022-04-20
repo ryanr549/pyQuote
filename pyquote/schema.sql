@@ -1,18 +1,18 @@
 DROP TABLE IF EXISTS subjects;
-DROP TABLE IF EXISTS quote;
+DROP TABLE IF EXISTS quotes;
 
 CREATE TABLE subjects (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    subject TEXT UNIQUE NOT NULL,
+    subject TEXT NOT NULL,
     collected TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE quotes (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    quote TEXT UNIQUE NOT NULL,
+    subject_id INTEGER NOT NULL,
+    quote TEXT NOT NULL,
     author TEXT NOT NULL DEFAULT someone,
     subject TEXT NOT NULL,
-    collected TIMESTAMP NOT NULL,
-    FOREIGN KEY (subject) REFERENCES subjects (subject)
-    FOREIGN KEY (collected) REFERENCES subjects(collected)
+    collected TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (subject_id) REFERENCES subjects (id)
 );
