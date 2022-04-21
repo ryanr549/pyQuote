@@ -1,5 +1,7 @@
 """use sqlite3 to keep saved quotes"""
 import sqlite3
+import psycopg2
+import os
 import click
 from flask import current_app, g
 from flask.cli import with_appcontext
@@ -7,27 +9,49 @@ from flask.cli import with_appcontext
 def get_db():
     """connect to the database"""
     if 'db' not in g:
-        g.db = sqlite3.connect(
-            current_app.config['DATABASE'],
-            detect_types=sqlite3.PARSE_DECLTYPES
+        g.db = psycopg2.connect(
+            host="localhost",
+            database="pyquote_db",
+            user=os.environ['DB_USERNAME'],
+            password=os.environ['DB_PASSWORD']
         )
-        g.db.row_factory = sqlite3.Row
-
     return g.db
 
 def close_db(e=None):
     """close the database"""
-    db = g.pop('db', None)
+    d = g.pop('db', None)
 
-    if db is not None:
-        db.close()
+    if d is not None:
+        d.close()
 
 def init_db():
     """initialize database"""
-    db = get_db()
+    d = get_db()
+    cursor = d.cursor()
 
-    with current_app.open_resource('schema.sql') as f:
-        db.executescript(f.read().decode('utf8'))
+    # execute sql command to initialize the dadabase
+    cursor.execute('DROP TABLE IF EXISTS subjects;')
+    cursor.execute('DROP TABLE IF EXISTS quotes;')
+    cursor.execute('DROP TABLE IF EXISTS photos;')
+    cursor.execute(
+        'CREATE TABLE subjects (id serial PRIMARY KEY, '
+        'subject text, '
+        'collected TIMESTAMP DEFAULT CURRENT_TIMESTAMP);'
+    )
+    cursor.execute(
+        'CREATE TABLE quotes (id serial PRIMARY KEY,'
+        'quote text NOT NULL,'
+        'author text NOT NULL,'
+        'subject text NOT NULL);'
+    )
+    cursor.execute(
+        'CREATE TABLE photos (id serial PRIMARY KEY,'
+        'image_url TEXT NOT NULL,'
+        'subject TEXT NOT NULL);'
+    )
+    d.commit()
+    cursor.close()
+    d.close()
 
 @click.command('init-db')
 @with_appcontext

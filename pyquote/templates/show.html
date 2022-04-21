@@ -4,15 +4,10 @@
     <h1>{% block title %}show{% endblock %}</h1>
 {% endblock %}
 {% block content %}
-    {% for quote in quotes %}
-        <header>
-            <div>
-                <h1>{{ quote['quote'] }}</h1>
-                <div>by {{ quote['author'] }}</div>
-            </div>
-        </header>
-        {% if not loop.last %}
-            <hr>
-        {% endif %}
-    {% endfor %}
+    <header>
+        <div>
+            <h1>{{ quotes[quote_id]['quote'] }}</h1>
+            <div>by {{ quotes[quote_id]['author'] }}</div>
+        </div>
+    </header>
 {% endblock %}

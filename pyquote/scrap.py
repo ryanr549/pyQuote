@@ -14,11 +14,9 @@ def scrap_quotes(subject):
     print(url)
     r = requests.get(url)
     bs = BeautifulSoup(r.text)
-    quotes = bs.find("div", {"id": "mw-parser-output"}).find("h2", recursive=False).parent
+    # locate the quotes using their parent element
+    quotes = bs.find("div", {"class": "mw-parser-output"}).find("h2", recursive=False).parent
     lines = quotes.findAll("ul", recursive=False)
-    for line in lines:
-        print(line.get_text())
-        print('\n')
     return lines
 
 def scrap_unsplash(keyword):

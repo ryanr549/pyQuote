@@ -3,23 +3,23 @@ DROP TABLE IF EXISTS quotes;
 DROP TABLE IF EXISTS photos;
 
 CREATE TABLE subjects (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id serial PRIMARY KEY,
     subject TEXT NOT NULL,
     collected TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE quotes (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id serial PRIMARY KEY,
     subject_id INTEGER NOT NULL,
     quote TEXT NOT NULL,
-    author TEXT NOT NULL DEFAULT someone,
+    author TEXT NOT NULL DEFAULT 'someone',
     subject TEXT NOT NULL,
     collected TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (subject_id) REFERENCES subjects (id)
 );
 
 CREATE TABLE photos (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id serial PRIMARY KEY,
     subject_id INTEGER NOT NULL,
     image_url TEXT NOT NULL,
     subject TEXT NOT NULL,
