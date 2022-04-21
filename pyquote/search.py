@@ -46,8 +46,16 @@ def add():
                         'VALUES (?, ?, ?, ?)',
                         (quote, author, subject, counts)
                     )
-            cursor.commit()
-
-    return render_template('search.html')
+            image_url_list = scrap.scrap_unsplash(subject)
+            for image_url in image_url_list:
+                cursor.execute(
+                    'INSERT INTO photos (image_url, subject, subject_id)'
+                    'VALUES (?, ?, ?)',
+                    (image_url, subject, counts)
+                )
+            d.commit()
+            # after the commit is done close database connection
+            d.close()
+        return redirect('/'+subject)
 
 
