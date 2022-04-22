@@ -5,13 +5,7 @@ def create_app(test_config=None):
     """factory function"""
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
-
-    if test_config is None:
-        # load the instance config, if it exists, when not testing
-        app.config.from_pyfile('config.py', silent=True)
-    else:
-        # load the config if passed in
-        app.config.from_mapping(test_config)
+    app.config['SECRET_KEY'] = b'\xcf\xa1\x94\x9c\xe5\x0b\xa4f\xc5N!\x05Ra\xfc\x9d'
 
     # ensure the instance folder exists
     try:
