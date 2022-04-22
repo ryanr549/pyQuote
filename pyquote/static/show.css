@@ -1,0 +1,25 @@
+.quote {
+    top: 40%;
+    font-family:  'lora', serif;
+    font-size: 2em;
+    padding-top: 3em;
+    padding-bottom: 2em;
+    padding-left: 4em;
+    padding-right: 4em;
+}
+
+.author {
+    width: 36em;
+    font-family: 'lora', serif;
+    font-size: 1em;
+    text-align: right;
+    padding-top: 1em;
+    padding-right: 3em;
+    padding-left: 3em;
+    position: absolute;
+    right: 5em;
+}
+
+.quote p {
+    text-indent: 1.5em;
+}

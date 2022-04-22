@@ -1,0 +1,53 @@
+@font-face {
+    font-family: 'satisfy';
+    src: url('fonts/Satisfy-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'lora';
+    src: url('fonts/Lora-Regular.ttf');
+}
+header {
+    padding: 2em;
+    margin: 1em;
+}
+
+header a {
+    text-decoration: none;
+}
+.topnav {
+    font-family: 'satisfy';
+    font-size: 2em;
+    text-align: left;
+    position: absolute;
+    top: 0;
+    left: 1em;
+    right: 0;
+}
+
+.topnav a {
+    color: white;
+    text-align: center;
+    font-size: 2em;
+    top: 50%;
+}
+
+body {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: black;
+    height: auto;
+}
+.foot {
+    font-family: 'lora';
+    color: lightgray;
+    position: fixed;
+    bottom: 0em;
+    left: 0.8em;
+    font-size: 0.8em;
+}
+
+.foot a {
+    color: lightgray;
+    text-decoration: None;
+}

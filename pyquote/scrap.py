@@ -15,7 +15,11 @@ def scrap_quotes(subject):
     r = requests.get(url)
     bs = BeautifulSoup(r.text)
     # locate the quotes using their parent element
-    quotes = bs.find("div", {"class": "mw-parser-output"}).find("h2", recursive=False).parent
+    div = bs.find("div", {"class": "mw-parser-output"})
+    # if the keyword is improper(no quote is found), return None
+    if type(div) == type(None):
+        return None
+    quotes = div.find("h2", recursive=False).parent
     lines = quotes.findAll("ul", recursive=False)
     return lines
 
@@ -24,7 +28,7 @@ def scrap_unsplash(keyword):
     headers = {'user-agent':
                'Mozilla/5.0 (X11; Linux x86_64; rv:99.0) Gecko/20100101 Firefox/99.0'}
     # specify header as linux mozilla firefox browser
-    url = 'https://unsplash.com/s/photos/' + keyword +'?orientation=landscape'
+    url = 'https://unsplash.com/s/photos/' + keyword +'?orientation=landscape&color=black'
     bs = BeautifulSoup(requests.get(url).text)
     search = bs.find("div", {"data-test": "search-photos-route"})
     images = search.findAll("figure", {"itemprop": "image"})[0:16]

@@ -3,12 +3,26 @@
 {% block header %}
 <h1>{% block title %}Search{% endblock %}</h1>
 {% endblock %}
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='search.css') }}">
+{% endblock %}
 {% block content %}
-<form method="post">
-    <label for="subject">Subject</label>
-    <input name="subject" id="body" type="text" value="{{ request.form['subject'] }}"
-                                    required>
-    <input type="submit" value="Save">
-</form>
+<body>
+    <div class="searchbox">
+    <form method="post">
+        <input name="subject" id="body" type="text" placeholder="Enter your keyword!" value="{{ request.form['subject'] }}" required>
+        <input type="submit" value="GO">
+    </form>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    </div>
+</body>
 {% endblock %}
 

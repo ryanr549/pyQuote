@@ -1,0 +1,26 @@
+body {
+    background-image: url('bkg.jpg');
+    background-size: auto;
+}
+.searchbox {
+    position: absolute;
+    width: 30em;
+    margin-left: -13em;
+    top: 50%;
+    left: 50%;
+}
+
+.searchbox input {
+    font-family: 'lora';
+    font-size: 1.5em;
+    text-align: left;
+    border: thin;
+    height: 1.5em;
+}
+
+.flashes {
+    color: white;
+    font-family: 'lora';
+    text-align: left;
+}
+
