@@ -33,7 +33,7 @@ def scrap_unsplash(keyword):
     search = bs.find("div", {"data-test": "search-photos-route"})
     images = search.findAll("figure", {"itemprop": "image"})[0:16]
     if not len(images):
-        url = 'https://unsplash.com/s/photos/' + keyword + '?orientation=landscape&color=white'
+        url = 'https://unsplash.com/s/photos/' + keyword + '?orientation=landscape&color=black_and_white'
         bs = BeautifulSoup(requests.get(url).text)
         search = bs.find("div", {"data-test": "search-photos-route"})
         images = search.findAll("figure", {"itemprop": "image"})[0:16]
