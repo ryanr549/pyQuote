@@ -1,0 +1,5 @@
+include README.md
+graft pyquote/static
+graft pyquote/templates
+global-exclude *.pyc
+global-exclude *.ipynb
