@@ -8,13 +8,9 @@ from flask.cli import with_appcontext
 
 def get_db():
     """connect to the database"""
+    DATABASE_URL = os.environ['DATABASE_URL']
     if 'db' not in g:
-        g.db = psycopg2.connect(
-            host="localhost",
-            database="pyquote_db",
-            user=os.environ['DB_USERNAME'],
-            password=os.environ['DB_PASSWORD']
-        )
+        g.db = psycopg2.connect(DATABASE_URL, sslmode='require')
     return g.db
 
 def close_db(e=None):
