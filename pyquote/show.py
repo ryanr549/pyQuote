@@ -19,7 +19,7 @@ def index(subject):
     )
     # in sql we must use an extra "'"
     quotes = cursor.fetchall()
-    if len(quotes) == 0:
+    if not len(quotes):
         error = 'Page do not exist. Try again'
         # if entered a url not exist on database, flash an error.
         flash(error)
@@ -34,7 +34,10 @@ def index(subject):
     images = cursor.fetchall()
     # get images from database
     quote_id = random.randint(0, len(quotes) - 1)
+    if not len(images):
+        # if no bkg image, substitute with local files
+        images = [{"image_url": "./static/bkg01.jpg"}, {"image_url": "./static/bkg02.jpg"}]
     image_id = random.randint(0, len(images) - 1)
-    return render_template('show.html', quotes=quotes, images=images,
-                           quote_id=quote_id, image_id=image_id, subject=subject)
+    return render_template('show.html', quotes=quotes, quote_id=quote_id,
+                           images=images, image_id=image_id, subject=subject)
 
