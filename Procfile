@@ -1,1 +1,1 @@
-web: gunicorn pyquote.pyquote
+web: gunicorn "pyquote.create_app()"

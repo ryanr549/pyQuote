@@ -7,6 +7,9 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'flask',
+        'Flask==2.0.3',
+        'psycopg2==2.9.3',
+        'requests==2.27.1',
+        'beautifulsoup4==4.10.0'
     ],
 )
