@@ -1,3 +1,23 @@
+.download {
+    text-align: left;
+    font-family: 'lora';
+    font-size: 1em;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+}
+
+svg {
+    display: inline-block;
+    vertical-align: -.125em;
+}
+
+.download a{
+    text-decoration: none;
+    display: inline-block;
+    color: white;
+}
+
 .quote {
     top: 40%;
     font-family:  'lora', serif;
