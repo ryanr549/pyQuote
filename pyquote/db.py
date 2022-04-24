@@ -1,5 +1,4 @@
 """use sqlite3 to keep saved quotes"""
-import sqlite3
 import psycopg2
 import os
 import click
@@ -12,13 +11,6 @@ def get_db():
     if 'db' not in g:
         g.db = psycopg2.connect(DATABASE_URL, sslmode='require')
     return g.db
-
-def close_db(e=None):
-    """close the database"""
-    d = g.pop('db', None)
-
-    if d is not None:
-        d.close()
 
 def init_db():
     """initialize database"""
@@ -58,9 +50,3 @@ def init_db_command():
     """
     init_db()
     click.echo('Initialized the database.')
-
-def init_app(app):
-    app.teardown_appcontext(close_db)
-    app.cli.add_command(init_db_command)
-
-
