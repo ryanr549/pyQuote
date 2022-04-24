@@ -37,7 +37,7 @@ def scrap_unsplash(keyword):
         url = 'https://unsplash.com/s/photos/' + keyword + '?orientation=landscape&color=black_and_white'
         bs = BeautifulSoup(requests.get(url).text)
         search = bs.find("div", {"data-test": "search-photos-route"})
-        images = search.findAll("figure", {"itemprop": "image"})
+        images = search.findAll("figure", {"itemprop": "image"})[0:15]
     image_list = []
     for image in images:
         # find images source url in the search result page
