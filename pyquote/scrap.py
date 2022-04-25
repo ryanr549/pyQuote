@@ -44,7 +44,12 @@ def scrap_unsplash(keyword):
         srcset = image.find("img")['srcset']
         # use regular expression to extract a 2k image source url
         pattern = re.compile(r'https?:\/\/[\w.\/\-?=&%]+\s2[0-9][0-9][0-9]w')
-        src, _, _ = pattern.search(srcset).group().partition(' ')
+        result_url = pattern.search(srcset).group()
+        if type(result_url) == type(None):
+            # if no 2k image, find the best resolution as posible
+            pattern = re.compile(r'https?:\/\/[\w.\/\-?=&%]+\s')
+            result_url = pattern.findall(srcset)[-1]
+            src, _, _ = result_url.partition(' ')
         # extract image_url from the string using partition() method
         image_list.append(src)
         # control the request frequency to mimic a normal browser user
