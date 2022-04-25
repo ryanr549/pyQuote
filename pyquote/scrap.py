@@ -41,7 +41,7 @@ def scrap_unsplash(keyword):
     image_list = []
     for image in images:
         # find images source url in the search result page
-        srcset = image.find("img")['srcset']
+        srcset = image.find("img", {"itemprop": "thumbnailUrl"})['srcset']
         # use regular expression to extract a 2k image source url
         pattern = re.compile(r'https?:\/\/[\w.\/\-?=&%]+\s2[0-9][0-9][0-9]w')
         result_url = pattern.search(srcset)
