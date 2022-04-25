@@ -52,7 +52,7 @@ def scrap_unsplash(keyword):
         else:
             # transform into str
             result_url = result_url.group()
-        src, _, _ = result_url.group().partition(' ')
+        src, _, _ = result_url.partition(' ')
         # extract image_url from the string using partition() method
         image_list.append(src)
         # control the request frequency to mimic a normal browser user
